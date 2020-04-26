@@ -1,7 +1,6 @@
 import React, { Component } from 'react'
 import logo from './logo.svg';
 import FormInput from './FormInput'
-import FormResult from './FormResult'
 import './Form.css'
 import AccountCircle from '@material-ui/icons/AccountCircle';
 import InputAdornment from '@material-ui/core/InputAdornment';
@@ -9,7 +8,7 @@ import EmailRounded from '@material-ui/icons/EmailRounded';
 import PhoneAndroidRounded from '@material-ui/icons/PhoneAndroidRounded';
 import LockRounded from '@material-ui/icons/LockRounded';
 import Button from '@material-ui/core/Button';
-import { Link, Redirect } from 'react-router-dom';
+import {  Redirect } from 'react-router-dom';
 import Swal from 'sweetalert2'
 class Form extends Component {
     constructor() {
@@ -29,7 +28,7 @@ class Form extends Component {
         let password = this.refs.password.getValue();
         let telefono = this.refs.telefono.getValue();
         
-        if (usuario != "" && email != "" && password != "" && telefono != "" ) {
+        if (usuario !== "" && email !== "" && password !== "" && telefono !== "" ) {
             Swal.fire({
                 position: 'top-center',
                 icon: 'success',

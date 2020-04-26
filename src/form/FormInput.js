@@ -1,10 +1,7 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import './Form.css'
-import { makeStyles } from '@material-ui/core/styles';
 import TextField from '@material-ui/core/TextField';
-import AccountCircle from '@material-ui/icons/AccountCircle';
-import InputAdornment from '@material-ui/core/InputAdornment';
 
 class FormInput extends Component {
   constructor(props){

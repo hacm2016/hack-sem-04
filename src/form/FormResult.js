@@ -1,13 +1,6 @@
 import React, { Component } from 'react'
 import logo from './logo.svg';
-import FormInput from './FormInput'
 import './Form.css'
-import AccountCircle from '@material-ui/icons/AccountCircle';
-import InputAdornment from '@material-ui/core/InputAdornment';
-import EmailRounded from '@material-ui/icons/EmailRounded';
-import PhoneAndroidRounded from '@material-ui/icons/PhoneAndroidRounded';
-import LockRounded from '@material-ui/icons/LockRounded';
-import Button from '@material-ui/core/Button';
 import PropTypes from 'prop-types'
 class FormResult extends Component {
     constructor(props) {
