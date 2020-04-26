@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import logo from './logo.svg';
 import FormInput from './FormInput'
+import FormResult from './FormResult'
 import './Form.css'
 import AccountCircle from '@material-ui/icons/AccountCircle';
 import InputAdornment from '@material-ui/core/InputAdornment';
@@ -8,16 +9,15 @@ import EmailRounded from '@material-ui/icons/EmailRounded';
 import PhoneAndroidRounded from '@material-ui/icons/PhoneAndroidRounded';
 import LockRounded from '@material-ui/icons/LockRounded';
 import Button from '@material-ui/core/Button';
-import {
-    BrowserRouter as Router,Redirect,hashHistory,withRouter ,
-    Route
-  } from 'react-router-dom';
-  
+import { Link, Redirect } from 'react-router-dom';
+import Swal from 'sweetalert2'
 class Form extends Component {
     constructor() {
         super();
         this.state = {
-            labelLegend: ''
+         
+            isCorrect: false,
+            url:""
         }
         this.onSubmit = this.onSubmit.bind(this);
     }
@@ -28,12 +28,27 @@ class Form extends Component {
         let email = this.refs.email.getValue();
         let password = this.refs.password.getValue();
         let telefono = this.refs.telefono.getValue();
-        alert(usuario);
         
+        if (usuario != "" && email != "" && password != "" && telefono != "" ) {
+            Swal.fire({
+                position: 'top-center',
+                icon: 'success',
+                title: 'Datos Registrados Correctamente',
+                showConfirmButton: false,
+                timer: 1500
+              })
+            this.setState({ isCorrect: true,url:"/formresult/" + usuario +"/" + email +"/" +password +"/" + telefono});
+           
+        }else {
+            this.setState({ isCorrect: false});
+          }
     }
     render() {
         return (
             <div className="Form">
+                 {this.state.isCorrect ?
+          <Redirect to={this.state.url}/>
+          :
                 <div className="Form-form">
                     
                     <div className="caja"  >
@@ -87,7 +102,8 @@ class Form extends Component {
                             ),
                         }} />
                     <br></br>
-                    <Button variant="contained"  className="Form-button" type="onSubmit">
+                    
+                    <Button variant="contained" color="primary" disableElevation  type="onSubmit">
                         Enviar
 </Button>
 
@@ -100,7 +116,7 @@ class Form extends Component {
 <img src={logo} className="App-logo" alt="logo" />
 </div>
                 </div>
-
+ }
             </div>
 
         );
